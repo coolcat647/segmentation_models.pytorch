@@ -14,7 +14,7 @@ class DecoderBlock(nn.Module):
             use_batchnorm=True,
             attention_type=None,
     ):
-        super().__init__()
+        super(DecoderBlock, self).__init__()
         self.conv1 = md.Conv2dReLU(
             in_channels + skip_channels,
             out_channels,
@@ -59,7 +59,7 @@ class CenterBlock(nn.Sequential):
             padding=1,
             use_batchnorm=use_batchnorm,
         )
-        super().__init__(conv1, conv2)
+        super(CenterBlock, self).__init__(conv1, conv2)
 
 
 class UnetDecoder(nn.Module):
@@ -72,7 +72,7 @@ class UnetDecoder(nn.Module):
             attention_type=None,
             center=False,
     ):
-        super().__init__()
+        super(UnetDecoder, self).__init__()
 
         if n_blocks != len(decoder_channels):
             raise ValueError(

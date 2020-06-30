@@ -49,7 +49,7 @@ class Conv2dReLU(nn.Sequential):
 
 class SCSEModule(nn.Module):
     def __init__(self, in_channels, reduction=16):
-        super().__init__()
+        super(SCSEModule, self).__init__()
         self.cSE = nn.Sequential(
             nn.AdaptiveAvgPool2d(1),
             nn.Conv2d(in_channels, in_channels // reduction, 1),
@@ -66,7 +66,7 @@ class SCSEModule(nn.Module):
 class ArgMax(nn.Module):
 
     def __init__(self, dim=None):
-        super().__init__()
+        super(ArgMax, self).__init__()
         self.dim = dim
 
     def forward(self, x):
@@ -77,7 +77,7 @@ class Activation(nn.Module):
 
     def __init__(self, name, **params):
 
-        super().__init__()
+        super(Activation, self).__init__()
 
         if name is None or name == 'identity':
             self.activation = nn.Identity(**params)
@@ -105,7 +105,7 @@ class Activation(nn.Module):
 class Attention(nn.Module):
 
     def __init__(self, name, **params):
-        super().__init__()
+        super(Attention, self).__init__()
 
         if name is None:
             self.attention = nn.Identity(**params)

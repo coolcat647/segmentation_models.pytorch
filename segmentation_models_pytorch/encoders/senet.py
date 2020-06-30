@@ -37,7 +37,7 @@ from ._base import EncoderMixin
 
 class SENetEncoder(SENet, EncoderMixin):
     def __init__(self, out_channels, depth=5, **kwargs):
-        super().__init__(**kwargs)
+        super(SENetEncoder, self).__init__(**kwargs)
 
         self._out_channels = out_channels
         self._depth = depth
@@ -69,7 +69,7 @@ class SENetEncoder(SENet, EncoderMixin):
     def load_state_dict(self, state_dict, **kwargs):
         state_dict.pop("last_linear.bias")
         state_dict.pop("last_linear.weight")
-        super().load_state_dict(state_dict, **kwargs)
+        super(SENetEncoder, self).load_state_dict(state_dict, **kwargs)
 
 
 senet_encoders = {

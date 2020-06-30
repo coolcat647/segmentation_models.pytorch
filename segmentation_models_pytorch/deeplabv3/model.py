@@ -37,17 +37,17 @@ class DeepLabV3(SegmentationModel):
         
     def __init__(
             self,
-            encoder_name: str = "resnet34",
-            encoder_depth: int = 5,
-            encoder_weights: Optional[str] = "imagenet",
-            decoder_channels: int = 256,
-            in_channels: int = 3,
-            classes: int = 1,
-            activation: Optional[str] = None,
-            upsampling: int = 8,
-            aux_params: Optional[dict] = None,
+            encoder_name = "resnet34",
+            encoder_depth = 5,
+            encoder_weights = "imagenet",
+            decoder_channels = 256,
+            in_channels = 3,
+            classes = 1,
+            activation = None,
+            upsampling = 8,
+            aux_params = None,
     ):
-        super().__init__()
+        super(DeepLabV3, self).__init__()
 
         self.encoder = get_encoder(
             encoder_name,
@@ -114,19 +114,19 @@ Convolution for Semantic Image Segmentation"
     """
     def __init__(
             self,
-            encoder_name: str = "resnet34",
-            encoder_depth: int = 5,
-            encoder_weights: Optional[str] = "imagenet",
-            encoder_output_stride: int = 16,
-            decoder_channels: int = 256,
-            decoder_atrous_rates: tuple = (12, 24, 36),
-            in_channels: int = 3,
-            classes: int = 1,
-            activation: Optional[str] = None,
-            upsampling: int = 4,
-            aux_params: Optional[dict] = None,
+            encoder_name = "resnet34",
+            encoder_depth = 5,
+            encoder_weights = "imagenet",
+            encoder_output_stride = 16,
+            decoder_channels = 256,
+            decoder_atrous_rates = (12, 24, 36),
+            in_channels = 3,
+            classes = 1,
+            activation = None,
+            upsampling = 4,
+            aux_params = None,
     ):
-        super().__init__()
+        super(DeepLabV3Plus, self).__init__()
 
         self.encoder = get_encoder(
             encoder_name,

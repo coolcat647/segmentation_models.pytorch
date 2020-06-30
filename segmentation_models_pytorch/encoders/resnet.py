@@ -35,7 +35,7 @@ from ._base import EncoderMixin
 
 class ResNetEncoder(ResNet, EncoderMixin):
     def __init__(self, out_channels, depth=5, **kwargs):
-        super().__init__(**kwargs)
+        super(ResNetEncoder, self).__init__(**kwargs)
         self._depth = depth
         self._out_channels = out_channels
         self._in_channels = 3
@@ -66,7 +66,7 @@ class ResNetEncoder(ResNet, EncoderMixin):
     def load_state_dict(self, state_dict, **kwargs):
         state_dict.pop("fc.bias")
         state_dict.pop("fc.weight")
-        super().load_state_dict(state_dict, **kwargs)
+        super(ResNetEncoder, self).load_state_dict(state_dict, **kwargs)
 
 
 resnet_encoders = {

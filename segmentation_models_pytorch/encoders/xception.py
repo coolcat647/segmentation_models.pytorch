@@ -9,8 +9,8 @@ from ._base import EncoderMixin
 
 class XceptionEncoder(Xception, EncoderMixin):
 
-    def __init__(self, out_channels, *args, depth=5, **kwargs):
-        super().__init__(*args, **kwargs)
+    def __init__(self, out_channels, depth=5, *args, **kwargs):
+        super(XceptionEncoder, self).__init__(*args, **kwargs)
 
         self._out_channels = out_channels
         self._depth = depth
@@ -52,7 +52,7 @@ class XceptionEncoder(Xception, EncoderMixin):
         state_dict.pop('fc.bias')
         state_dict.pop('fc.weight')
 
-        super().load_state_dict(state_dict)
+        super(XceptionEncoder, self).load_state_dict(state_dict)
 
 
 xception_encoders = {

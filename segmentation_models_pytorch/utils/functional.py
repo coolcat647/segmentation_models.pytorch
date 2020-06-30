@@ -1,7 +1,7 @@
 import torch
 
 
-def _take_channels(*xs, ignore_channels=None):
+def _take_channels(ignore_channels=None, *xs):
     if ignore_channels is None:
         return xs
     else:

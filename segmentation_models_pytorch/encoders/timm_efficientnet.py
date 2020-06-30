@@ -53,7 +53,7 @@ class EfficientNetEncoder(EfficientNet, EncoderMixin):
 
     def __init__(self, stage_idxs, out_channels, depth=5, channel_multiplier=1.0, depth_multiplier=1.0):
             kwargs = get_efficientnet_kwargs(channel_multiplier, depth_multiplier)
-            super().__init__(**kwargs)
+            super(EfficientNetEncoder, self).__init__(**kwargs)
 
             self._stage_idxs = stage_idxs
             self._out_channels = out_channels
@@ -85,7 +85,7 @@ class EfficientNetEncoder(EfficientNet, EncoderMixin):
     def load_state_dict(self, state_dict, **kwargs):
         state_dict.pop("classifier.bias")
         state_dict.pop("classifier.weight")
-        super().load_state_dict(state_dict, **kwargs)
+        super(EfficientNetEncoder, self).load_state_dict(state_dict, **kwargs)
 
 
 def prepare_settings(settings):

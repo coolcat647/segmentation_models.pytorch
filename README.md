@@ -1,5 +1,13 @@
 <div align="center">
+<div align="left">
+
+### Modification
+I modified the package so that the **segmentation_models_pytorch** can be ran by Python2.7 in this version. <br/>
+**Note that** I ignored `efficientnet` and `timm_efficientnet` due to the compatibility problem, check out [here](https://github.com/coolcat647/segmentation_models.pytorch/blob/master/segmentation_models_pytorch/encoders/__init__.py#L11) to see the detail.
+</div>
  
+---
+
 ![logo](https://i.ibb.co/dc1XdhT/Segmentation-Models-V2-Side-1-1.png)  
 **Python library with Neural Networks for Image  
 Segmentation based on [PyTorch](https://pytorch.org/).**  

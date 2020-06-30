@@ -33,7 +33,7 @@ class EfficientNetEncoder(EfficientNet, EncoderMixin):
     def __init__(self, stage_idxs, out_channels, model_name, depth=5):
 
         blocks_args, global_params = get_model_params(model_name, override_params=None)
-        super().__init__(blocks_args, global_params)
+        super(EfficientNetEncoder, self).__init__(blocks_args, global_params)
 
         self._stage_idxs = stage_idxs
         self._out_channels = out_channels

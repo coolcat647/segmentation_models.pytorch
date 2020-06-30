@@ -32,7 +32,7 @@ from ._base import EncoderMixin
 class MobileNetV2Encoder(torchvision.models.MobileNetV2, EncoderMixin):
 
     def __init__(self, out_channels, depth=5, **kwargs):
-        super().__init__(**kwargs)
+        super(MobileNetV2Encoder, self).__init__(**kwargs)
         self._depth = depth
         self._out_channels = out_channels
         self._in_channels = 3
@@ -61,7 +61,7 @@ class MobileNetV2Encoder(torchvision.models.MobileNetV2, EncoderMixin):
     def load_state_dict(self, state_dict, **kwargs):
         state_dict.pop("classifier.1.bias")
         state_dict.pop("classifier.1.weight")
-        super().load_state_dict(state_dict, **kwargs)
+        super(MobileNetV2Encoder, self).load_state_dict(state_dict, **kwargs)
 
 
 mobilenet_encoders = {

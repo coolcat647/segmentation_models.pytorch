@@ -6,7 +6,7 @@ from ..base import modules
 class TransposeX2(nn.Sequential):
 
     def __init__(self, in_channels, out_channels, use_batchnorm=True):
-        super().__init__()
+        super(TransposeX2, self).__init__()
         layers = [
             nn.ConvTranspose2d(in_channels, out_channels, kernel_size=4, stride=2, padding=1),
             nn.ReLU(inplace=True)
@@ -20,7 +20,7 @@ class TransposeX2(nn.Sequential):
 
 class DecoderBlock(nn.Module):
     def __init__(self, in_channels, out_channels, use_batchnorm=True):
-        super().__init__()
+        super(DecoderBlock, self).__init__()
 
         self.block = nn.Sequential(
             modules.Conv2dReLU(in_channels, in_channels // 4, kernel_size=1, use_batchnorm=use_batchnorm),
@@ -44,7 +44,7 @@ class LinknetDecoder(nn.Module):
             n_blocks=5,
             use_batchnorm=True,
     ):
-        super().__init__()
+        super(LinknetDecoder, self).__init__()
 
         encoder_channels = encoder_channels[1:]  # remove first skip
         encoder_channels = encoder_channels[::-1]  # reverse channels to start from head of encoder

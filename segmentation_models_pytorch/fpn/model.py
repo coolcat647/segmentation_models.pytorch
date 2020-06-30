@@ -42,20 +42,20 @@ class FPN(SegmentationModel):
 
     def __init__(
         self,
-        encoder_name: str = "resnet34",
-        encoder_depth: int = 5,
-        encoder_weights: Optional[str] = "imagenet",
-        decoder_pyramid_channels: int = 256,
-        decoder_segmentation_channels: int = 128,
-        decoder_merge_policy: str = "add",
-        decoder_dropout: float = 0.2,
-        in_channels: int = 3,
-        classes: int = 1,
-        activation: Optional[str] = None,
-        upsampling: int = 4,
-        aux_params: Optional[dict] = None,
+        encoder_name = "resnet34",
+        encoder_depth = 5,
+        encoder_weights = "imagenet",
+        decoder_pyramid_channels = 256,
+        decoder_segmentation_channels = 128,
+        decoder_merge_policy = "add",
+        decoder_dropout = 0.2,
+        in_channels = 3,
+        classes = 1,
+        activation = None,
+        upsampling = 4,
+        aux_params = None,
     ):
-        super().__init__()
+        super(FPN, self).__init__()
 
         self.encoder = get_encoder(
             encoder_name,

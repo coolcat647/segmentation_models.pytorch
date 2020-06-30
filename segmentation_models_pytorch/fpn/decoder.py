@@ -5,7 +5,7 @@ import torch.nn.functional as F
 
 class Conv3x3GNReLU(nn.Module):
     def __init__(self, in_channels, out_channels, upsample=False):
-        super().__init__()
+        super(Conv3x3GNReLU, self).__init__()
         self.upsample = upsample
         self.block = nn.Sequential(
             nn.Conv2d(
@@ -24,7 +24,7 @@ class Conv3x3GNReLU(nn.Module):
 
 class FPNBlock(nn.Module):
     def __init__(self, pyramid_channels, skip_channels):
-        super().__init__()
+        super(FPNBlock, self).__init__()
         self.skip_conv = nn.Conv2d(skip_channels, pyramid_channels, kernel_size=1)
 
     def forward(self, x, skip=None):
@@ -36,7 +36,7 @@ class FPNBlock(nn.Module):
 
 class SegmentationBlock(nn.Module):
     def __init__(self, in_channels, out_channels, n_upsamples=0):
-        super().__init__()
+        super(SegmentationBlock, self).__init__()
 
         blocks = [Conv3x3GNReLU(in_channels, out_channels, upsample=bool(n_upsamples))]
 
@@ -52,7 +52,7 @@ class SegmentationBlock(nn.Module):
 
 class MergeBlock(nn.Module):
     def __init__(self, policy):
-        super().__init__()
+        super(MergeBlock, self).__init__()
         if policy not in ["add", "cat"]:
             raise ValueError(
                 "`merge_policy` must be one of: ['add', 'cat'], got {}".format(
@@ -82,7 +82,7 @@ class FPNDecoder(nn.Module):
             dropout=0.2,
             merge_policy="add",
     ):
-        super().__init__()
+        super(FPNDecoder, self).__init__()
 
         self.out_channels = segmentation_channels if merge_policy == "add" else segmentation_channels * 4
         if encoder_depth < 3:

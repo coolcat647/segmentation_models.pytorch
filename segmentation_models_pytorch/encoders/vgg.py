@@ -42,7 +42,7 @@ cfg = {
 
 class VGGEncoder(VGG, EncoderMixin):
     def __init__(self, out_channels, config, batch_norm=False, depth=5, **kwargs):
-        super().__init__(make_layers(config, batch_norm=batch_norm), **kwargs)
+        super(VGGEncoder, self).__init__(make_layers(config, batch_norm=batch_norm), **kwargs)
         self._out_channels = out_channels
         self._depth = depth
         self._in_channels = 3

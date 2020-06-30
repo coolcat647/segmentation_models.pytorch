@@ -45,19 +45,19 @@ class PSPNet(SegmentationModel):
 
     def __init__(
         self,
-        encoder_name: str = "resnet34",
-        encoder_weights: Optional[str] = "imagenet",
-        encoder_depth: int = 3,
-        psp_out_channels: int = 512,
-        psp_use_batchnorm: bool = True,
-        psp_dropout: float = 0.2,
-        in_channels: int = 3,
-        classes: int = 1,
-        activation: Optional[Union[str, callable]] = None,
-        upsampling: int = 8,
-        aux_params: Optional[dict] = None,
+        encoder_name = "resnet34",
+        encoder_weights = "imagenet",
+        encoder_depth = 3,
+        psp_out_channels = 512,
+        psp_use_batchnorm = True,
+        psp_dropout = 0.2,
+        in_channels = 3,
+        classes = 1,
+        activation = None,
+        upsampling = 8,
+        aux_params = None,
     ):
-        super().__init__()
+        super(PSPNet, self).__init__()
 
         self.encoder = get_encoder(
             encoder_name,

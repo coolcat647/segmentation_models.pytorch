@@ -8,7 +8,7 @@ from ..base import modules
 class PSPBlock(nn.Module):
 
     def __init__(self, in_channels, out_channels, pool_size, use_bathcnorm=True):
-        super().__init__()
+        super(PSPBlock, self).__init__()
         if pool_size == 1:
             use_bathcnorm = False  # PyTorch does not support BatchNorm for 1x1 shape
         self.pool = nn.Sequential(
@@ -25,7 +25,7 @@ class PSPBlock(nn.Module):
 
 class PSPModule(nn.Module):
     def __init__(self, in_channels, sizes=(1, 2, 3, 6), use_bathcnorm=True):
-        super().__init__()
+        super(PSPModule, self).__init__()
 
         self.blocks = nn.ModuleList([
             PSPBlock(in_channels, in_channels // len(sizes), size, use_bathcnorm=use_bathcnorm) for size in sizes
@@ -46,7 +46,7 @@ class PSPDecoder(nn.Module):
             out_channels=512,
             dropout=0.2,
     ):
-        super().__init__()
+        super(PSPDecoder, self).__init__()
 
         self.psp = PSPModule(
             in_channels=encoder_channels[-1],

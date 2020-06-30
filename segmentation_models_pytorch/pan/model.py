@@ -42,17 +42,17 @@ class PAN(SegmentationModel):
 
     def __init__(
             self,
-            encoder_name: str = "resnet34",
-            encoder_weights: str = "imagenet",
-            encoder_dilation: bool = True,
-            decoder_channels: int = 32,
-            in_channels: int = 3,
-            classes: int = 1,
-            activation: Optional[Union[str, callable]] = None,
-            upsampling: int = 4,
-            aux_params: Optional[dict] = None
+            encoder_name = "resnet34",
+            encoder_weights = "imagenet",
+            encoder_dilation = True,
+            decoder_channels = 32,
+            in_channels = 3,
+            classes = 1,
+            activation = None,
+            upsampling = 4,
+            aux_params = None
     ):
-        super().__init__()
+        super(PAN, self).__init__()
 
         self.encoder = get_encoder(
             encoder_name,

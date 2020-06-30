@@ -32,7 +32,7 @@ from ._base import EncoderMixin
 
 class InceptionV4Encoder(InceptionV4, EncoderMixin):
     def __init__(self, stage_idxs, out_channels, depth=5, **kwargs):
-        super().__init__(**kwargs)
+        super(InceptionV4Encoder, self).__init__(**kwargs)
         self._stage_idxs = stage_idxs
         self._out_channels = out_channels
         self._depth = depth
@@ -77,7 +77,7 @@ class InceptionV4Encoder(InceptionV4, EncoderMixin):
     def load_state_dict(self, state_dict, **kwargs):
         state_dict.pop("last_linear.bias")
         state_dict.pop("last_linear.weight")
-        super().load_state_dict(state_dict, **kwargs)
+        super(InceptionV4Encoder, self).load_state_dict(state_dict, **kwargs)
 
 
 inceptionv4_encoders = {

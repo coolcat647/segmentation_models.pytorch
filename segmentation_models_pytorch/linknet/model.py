@@ -41,16 +41,16 @@ class Linknet(SegmentationModel):
 
     def __init__(
         self,
-        encoder_name: str = "resnet34",
-        encoder_depth: int = 5,
-        encoder_weights: Optional[str] = "imagenet",
-        decoder_use_batchnorm: bool = True,
-        in_channels: int = 3,
-        classes: int = 1,
-        activation: Optional[Union[str, callable]] = None,
-        aux_params: Optional[dict] = None,
+        encoder_name = "resnet34",
+        encoder_depth = 5,
+        encoder_weights = "imagenet",
+        decoder_use_batchnorm = True,
+        in_channels = 3,
+        classes = 1,
+        activation = None,
+        aux_params = None,
     ):
-        super().__init__()
+        super(Linknet, self).__init__()
 
         self.encoder = get_encoder(
             encoder_name,

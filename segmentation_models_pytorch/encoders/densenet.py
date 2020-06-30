@@ -35,7 +35,7 @@ from ._base import EncoderMixin
 class TransitionWithSkip(nn.Module):
 
     def __init__(self, module):
-        super().__init__()
+        super(TransitionWithSkip, self).__init__()
         self.module = module
 
     def forward(self, x):
@@ -48,7 +48,7 @@ class TransitionWithSkip(nn.Module):
 
 class DenseNetEncoder(DenseNet, EncoderMixin):
     def __init__(self, out_channels, depth=5, **kwargs):
-        super().__init__(**kwargs)
+        super(DenseNetEncoder, self).__init__(**kwargs)
         self._out_channels = out_channels
         self._depth = depth
         self._in_channels = 3
@@ -99,7 +99,7 @@ class DenseNetEncoder(DenseNet, EncoderMixin):
         state_dict.pop("classifier.bias")
         state_dict.pop("classifier.weight")
 
-        super().load_state_dict(state_dict)
+        super(DenseNetEncoder, self).load_state_dict(state_dict)
 
 
 densenet_encoders = {

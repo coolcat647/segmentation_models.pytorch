@@ -39,7 +39,7 @@ __all__ = ["DeepLabV3Decoder"]
 
 class DeepLabV3Decoder(nn.Sequential):
     def __init__(self, in_channels, out_channels=256, atrous_rates=(12, 24, 36)):
-        super().__init__(
+        super(DeepLabV3Decoder, self).__init__(
             ASPP(in_channels, out_channels, atrous_rates),
             nn.Conv2d(out_channels, out_channels, 3, padding=1, bias=False),
             nn.BatchNorm2d(out_channels),
@@ -59,7 +59,7 @@ class DeepLabV3PlusDecoder(nn.Module):
         atrous_rates=(12, 24, 36),
         output_stride=16,
     ):
-        super().__init__()
+        super(DeepLabV3PlusDecoder, self).__init__()
         if output_stride not in {8, 16}:
             raise ValueError("Output stride should be 8 or 16, got {}.".format(output_stride))
 
@@ -106,7 +106,7 @@ class DeepLabV3PlusDecoder(nn.Module):
 
 class ASPPConv(nn.Sequential):
     def __init__(self, in_channels, out_channels, dilation):
-        super().__init__(
+        super(ASPPConv, self).__init__(
             nn.Conv2d(
                 in_channels,
                 out_channels,
@@ -122,7 +122,7 @@ class ASPPConv(nn.Sequential):
 
 class ASPPSeparableConv(nn.Sequential):
     def __init__(self, in_channels, out_channels, dilation):
-        super().__init__(
+        super(ASPPSeparableConv, self).__init__(
             SeparableConv2d(
                 in_channels,
                 out_channels,
@@ -138,7 +138,7 @@ class ASPPSeparableConv(nn.Sequential):
 
 class ASPPPooling(nn.Sequential):
     def __init__(self, in_channels, out_channels):
-        super().__init__(
+        super(ASPPPooling, self).__init__(
             nn.AdaptiveAvgPool2d(1),
             nn.Conv2d(in_channels, out_channels, kernel_size=1, bias=False),
             nn.BatchNorm2d(out_channels),
@@ -217,4 +217,4 @@ class SeparableConv2d(nn.Sequential):
             kernel_size=1,
             bias=bias,
         )
-        super().__init__(dephtwise_conv, pointwise_conv)
+        super(SeparableConv2d, self).__init__(dephtwise_conv, pointwise_conv)

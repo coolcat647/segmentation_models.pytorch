@@ -6,16 +6,16 @@ import torch.nn.functional as F
 class ConvBnRelu(nn.Module):
     def __init__(
             self,
-            in_channels: int,
-            out_channels: int,
-            kernel_size: int,
-            stride: int = 1,
-            padding: int = 0,
-            dilation: int = 1,
-            groups: int = 1,
-            bias: bool = True,
-            add_relu: bool = True,
-            interpolate: bool = False
+            in_channels,
+            out_channels,
+            kernel_size,
+            stride = 1,
+            padding = 0,
+            dilation = 1,
+            groups = 1,
+            bias = True,
+            add_relu = True,
+            interpolate = False
     ):
         super(ConvBnRelu, self).__init__()
         self.conv = nn.Conv2d(
@@ -109,9 +109,9 @@ class FPABlock(nn.Module):
 class GAUBlock(nn.Module):
     def __init__(
             self,
-            in_channels: int,
-            out_channels: int,
-            upscale_mode: str = 'bilinear'
+            in_channels,
+            out_channels,
+            upscale_mode = 'bilinear'
     ):
         super(GAUBlock, self).__init__()
 
@@ -147,9 +147,9 @@ class PANDecoder(nn.Module):
             self,
             encoder_channels,
             decoder_channels,
-            upscale_mode: str = 'bilinear'
+            upscale_mode = 'bilinear'
     ):
-        super().__init__()
+        super(PANDecoder, self).__init__()
 
         self.fpa = FPABlock(in_channels=encoder_channels[-1], out_channels=decoder_channels)
         self.gau3 = GAUBlock(in_channels=encoder_channels[-2], out_channels=decoder_channels, upscale_mode=upscale_mode)

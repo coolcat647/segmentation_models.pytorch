@@ -35,7 +35,7 @@ from ._base import EncoderMixin
 
 class DPNEncorder(DPN, EncoderMixin):
     def __init__(self, stage_idxs, out_channels, depth=5, **kwargs):
-        super().__init__(**kwargs)
+        super(DPNEncorder, self).__init__(**kwargs)
         self._stage_idxs = stage_idxs
         self._depth = depth
         self._out_channels = out_channels
@@ -70,7 +70,7 @@ class DPNEncorder(DPN, EncoderMixin):
     def load_state_dict(self, state_dict, **kwargs):
         state_dict.pop("last_linear.bias")
         state_dict.pop("last_linear.weight")
-        super().load_state_dict(state_dict, **kwargs)
+        super(DPNEncorder, self).load_state_dict(state_dict, **kwargs)
 
 
 dpn_encoders = {
